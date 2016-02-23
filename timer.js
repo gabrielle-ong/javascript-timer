@@ -11,6 +11,7 @@
 
 	function startTimer() {
 		timerID = window.setInterval(updateTime, 1000);
+        document.getElementById("start").disabled = true;
 		pause.addEventListener("click",pauseTimer,false);
 	}
 
