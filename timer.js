@@ -9,23 +9,30 @@
 	var start = document.getElementById('start');
 	var pause = document.getElementById('pause');
 
+    start.addEventListener("click",startTimer);
+    reset.addEventListener("click",resetTimer,false);
+    pause.addEventListener("click",pauseTimer,false);
+
+
 	function startTimer() {
 		timerID = window.setInterval(updateTime, 1000);
-		pause.addEventListener("click",pauseTimer,false);
-	}
-
-	function updateTime() {
-    	seconds++;
-		display.innerHTML = "Time Elapsed: " + seconds;
+        document.getElementById("start").disabled = true;
     }
+        
+    function updateTime() {
+            seconds++;
+            display.innerHTML = "Time Elapsed: " + seconds;
+    }
+		
+
+
     function pauseTimer () {
     	window.clearInterval(timerID);
+        document.getElementById("start").disabled = false;
     }
+
     function resetTimer() {
     	seconds = 0;
-    	window.clearInterval(timerID);
+        clearInterval(timerID);
     	display.innerHTML = "Stop Watch";
     }
-    start.addEventListener("click",startTimer);
-
-    reset.addEventListener("click",resetTimer,false);
